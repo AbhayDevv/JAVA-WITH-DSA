@@ -1,0 +1,18 @@
+public class App {
+    static void swapp(int a, int b){
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+        System.out.println("x=" +a);
+        System.out.println("y=" +b);
+    }
+    public static void main(String[] args) throws Exception {
+        System.out.println("Hello, World!");
+        int x=4;
+        int y=5;
+        System.out.println("x=" + x);
+        System.out.println("y=" + y);
+        swapp(x,y);
+    }
+}
