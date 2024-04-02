@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+public class App {
+     static void printarray(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.println(arr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    static void spiralmatrix(int[][] matrix ,int r,int c){
+        int top_row=0;
+        int bottom_row=r-1;
+        int left_col=0;
+        int right_col=c-1;
+        int total_el=0;
+        while(total_el<r*c){
+            for(int j=left_col;j<=right_col && total_el<r*c;j++){
+                System.out.println(matrix[top_row][j]);
+                total_el++;
+            }
+            top_row++;
+            for(int i=top_row;i<=bottom_row && total_el<r*c;i++){
+                System.out.println(matrix[i][right_col]);
+                total_el++;
+            }
+            right_col--;
+            for(int j=right_col;j>=left_col && total_el<r*c;j--){
+                System.out.println(matrix[bottom_row][j]);
+                total_el++;
+            }
+            bottom_row--;
+            for(int i=bottom_row;i>=top_row && total_el<r*c;i--){
+                System.out.println(matrix[i][left_col]);
+                total_el++;
+            }
+            left_col++;
+        }
+       // printarray(matrix);
+    }
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("ENTER THE NUMBER OF ROW");
+        int r = sc.nextInt();
+        System.out.println("ENTER THE NUMBER COLUMN");
+        int c = sc.nextInt();
+        int[][] a = new int[r][c];
+        System.out.println("ENTER THE ELEMENTS");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+        System.out.println("SPIRAL MATRIX ELEMENTS BELOW ------------");
+
+       spiralmatrix(a, r, c);
+      //  printarray(a);
+        sc.close();
+    }
+
+}
