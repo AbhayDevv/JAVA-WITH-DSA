@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+public class App {
+
+    static void reversearray(int[] arr) {
+        int i = 0;
+        int j = arr.length - 1;
+        while (i < j) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
+    static void printarray(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.println(arr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    static void transpose(int[][] a, int r1, int c1) {
+
+        for (int i = 0; i < c1; i++) {
+            for (int j = i; j < r1; j++) {
+                int temp = a[i][j];
+                a[i][j] = a[j][i];
+                a[j][i] = temp;
+
+            }
+        }
+    }
+
+    static void rotatematrix(int[][] a, int n) {
+        transpose(a, n, n);
+        for (int i = 0; i < n; i++) {
+            reversearray(a[i]);
+
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("ENTER THE NUMBER OF ROW");
+        int r = sc.nextInt();
+        System.out.println("ENTER THE NUMBER COLUMN");
+        int c = sc.nextInt();
+        int[][] a = new int[r][c];
+        System.out.println("ENTER THE ELEMENTS");
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+        System.out.println("NEW ROTATE ARRAY");
+
+        rotatematrix(a, r);
+        printarray(a);
+        sc.close();
+    }
+
+}
